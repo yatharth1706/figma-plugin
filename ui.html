@@ -1,0 +1,16 @@
+<h2>Frame creator</h2>
+<select id="frameSelection">
+  <option value="Mac">Mac</option>
+  <option value="Windows">Windows</option>
+</select>
+<button id="create">Create</button>
+<script>
+  document.getElementById("create").onclick = () => {
+    const selectedFrame = document.getElementById("frameSelection").value;
+    parent.postMessage({ pluginMessage: { type: "create-frame", selectedFrame } }, "*");
+  };
+
+  document.getElementById("cancel").onclick = () => {
+    parent.postMessage({ pluginMessage: { type: "cancel" } }, "*");
+  };
+</script>
